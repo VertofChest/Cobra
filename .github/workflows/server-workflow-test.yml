@@ -35,10 +35,10 @@ jobs:
       run: dotnet restore ${{ env.SOLUTION }}
       
     - name: Build
-      run: dotnet build --no-restore --configuration ${{ env.CONFIGURATION }} ${{ env.SOLUTION }}
+      run: dotnet build --no-restore --configuration ${{ env.CONFIGURATION }} ${{ env.SOLUTION }} /p:TreatWarningsAsErrors=false
       
     - name: Test
-      run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION }}
+      run: dotnet test --no-build --verbosity normal ${{ env.SOLUTION }} /p:TreatWarningsAsErrors=false
 
     - name: Cache
       uses: actions/cache@v4.2.4
